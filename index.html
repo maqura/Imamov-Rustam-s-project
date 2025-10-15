@@ -3,13 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="МБОУ «Лицей-интернат №79» — инновационное образовательное учреждение для одарённых детей в Набережных Челнах.">
+    <meta name="description" content="МБОУ «Лицей-интернат №79» — инновационное учреждение для одарённых детей в Набережных Челнах.">
     <title>Лицей-интернат №79</title>
-    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* === Сброс и базовые стили === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", system-ui, sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Светлая тема (по умолчанию) */
+        body {
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Тёмная тема */
+        body.dark-theme {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+
+        .dark-theme h2,
+        .dark-theme h3 {
+            color: #f7fafc;
+        }
+
+        .dark-theme a {
+            color: #63b3ed;
+        }
+
+        .dark-theme a:hover {
+            color: #90cdf4;
+        }
+
+        .dark-theme .results-table th {
+            background-color: #2d3748;
+            color: #f7fafc;
+        }
+
+        .dark-theme .results-table td {
+            border-color: #4a5568;
+        }
+
+        .dark-theme .hero {
+            background-color: #2d3748;
+        }
+
+        .dark-theme .site-footer {
+            background-color: #0f172a;
+        }
+
+        /* === Hero === */
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8fafc;
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #e2e8f0;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a5568;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .dark-theme .theme-toggle {
+            background: #4a5568;
+            color: #e2e8f0;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            color: #1a202c;
+            font-weight: 700;
+        }
+
+        .dark-theme .hero-title {
+            color: #f7fafc;
+        }
+
+        /* === Контент === */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: #1a202c;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .dark-theme h2 {
+            border-bottom-color: #4a5568;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        /* === Фильтры === */
+        .filters {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 6px 12px;
+            background: #e2e8f0;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .dark-theme .filter-btn {
+            background: #2d3748;
+            border-color: #4a5568;
+            color: #e2e8f0;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #0056b3;
+            color: white;
+        }
+
+        .dark-theme .filter-btn.active,
+        .dark-theme .filter-btn:hover {
+            background: #3182ce;
+        }
+
+        /* === Таблица === */
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+        }
+
+        .results-table th,
+        .results-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .dark-theme .results-table th,
+        .dark-theme .results-table td {
+            border-bottom: 1px solid #4a5568;
+        }
+
+        .results-table th {
+            background-color: #f7fafc;
+            font-weight: 600;
+        }
+
+        /* Скрытая строка */
+        .hidden {
+            display: none;
+        }
+
+        /* === Списки === */
+        ul, ol {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+        }
+
+        a {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .dark-theme a {
+            color: #63b3ed;
+        }
+
+        /* === Подвал === */
+        .site-footer {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 24px 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .hero-title { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            .filters { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Hero-секция -->
+    <!-- Hero -->
     <header class="hero">
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">🌓</button>
         <div class="hero-content">
             <h1 class="hero-title">Лицей-интернат №79</h1>
         </div>
@@ -18,85 +256,177 @@
     <!-- Основной контент -->
     <main class="main-content">
         <div class="container">
-            <!-- Карточки-кнопки -->
-            <div class="card-container">
-                <!-- О лицее -->
-                <div class="card clickable" data-target="about">
-                    <h2>О лицее</h2>
-                    <p>Нетиповое инновационное учреждение для одарённых детей в Набережных Челнах.</p>
-                </div>
 
-                <!-- История -->
-                <div class="card clickable" data-target="history">
-                    <h2>История лицея</h2>
-                    <p>Основан в 1990 году как центр поддержки талантливых школьников.</p>
-                </div>
-
-                <!-- Достижения -->
-                <div class="card clickable" data-target="achievements">
-                    <h2>Достижения</h2>
-                    <p>Победы на олимпиадах, поступление в МГУ, MIT и другие вузы.</p>
-                </div>
-
-                <!-- Программы -->
-                <div class="card clickable" data-target="programs">
-                    <h2>Образовательные программы</h2>
-                    <p>Углублённые курсы по STEM и soft skills.</p>
-                </div>
-
-                <!-- Проживание -->
-                <div class="card clickable" data-target="accommodation">
-                    <h2>Условия проживания</h2>
-                    <p>Комфортные общежития и сбалансированное питание.</p>
-                </div>
-            </div>
-
-            <!-- Подробные секции (изначально скрыты) -->
-            <div id="about" class="detail-section">
+            <!-- О лицее -->
+            <section id="about">
                 <h2>О лицее</h2>
-                <img src="https://i4.photo.2gis.com/images/branch/0/30258560051325542_777e.jpg" alt="Лицей-интернат №79" class="detail-image">
-                <p>МБОУ «Лицей-интернат №79» — нетиповое инновационное образовательное учреждение для одарённых детей с круглосуточным пребыванием воспитанников в городе Набережные Челны, Республика Татарстан. Лицей создан для выявления, поддержки и развития способностей учащихся в условиях интенсивной образовательной среды.</p>
-                <p>Обучение ведётся по авторским методикам, сочетающим академическую строгость и творческую свободу. В лицее работают лучшие педагоги республики, многие из которых — лауреаты премий и победители профессиональных конкурсов.</p>
-            </div>
+                <p>МБОУ «Лицей-интернат №79» — нетиповое инновационное образовательное учреждение для одарённых детей с круглосуточным пребыванием воспитанников в городе Набережные Челны, Республика Татарстан.</p>
+            </section>
 
-            <div id="history" class="detail-section">
+            <!-- История -->
+            <section id="history">
                 <h2>История лицея</h2>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Naberezhnye_Chelny_City_Panorama.jpg/1280px-Naberezhnye_Chelny_City_Panorama.jpg" alt="Набережные Челны" class="detail-image">
                 <p>Лицей-интернат №79 был основан в 1990 году как центр для выявления и поддержки талантливых школьников. За годы своей работы лицей стал площадкой для развития научного, творческого и спортивного потенциала учащихся со всей республики.</p>
-                <p>С самого начала учреждение ориентировалось на индивидуализацию обучения и создание условий для максимальной самореализации каждого ребёнка. Сегодня лицей — это не только школа, но и научно-методический центр, проводящий конференции, семинары и летние школы для одарённых детей.</p>
-            </div>
+            </section>
 
-            <div id="achievements" class="detail-section">
+            <!-- Достижения -->
+            <section id="achievements">
                 <h2>Достижения</h2>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Olympic_medals.svg/800px-Olympic_medals.svg.png" alt="Медали" class="detail-image">
                 <p>Ученики лицея регулярно становятся призёрами и победителями Всероссийских олимпиад, международных конкурсов и научных конференций. Многие выпускники поступают в ведущие вузы России и мира, включая МГУ, МФТИ и MIT.</p>
-                <p>Ежегодно более 80% выпускников лицея поступают в топ-10 вузов страны. Среди них — будущие учёные, инженеры, программисты и предприниматели. Лицей гордится своими выпускниками, которые вносят вклад в развитие науки и технологий как в России, так и за рубежом.</p>
-            </div>
 
-            <div id="programs" class="detail-section">
+                <!-- Фильтры -->
+                <h3>Фильтр по предмету</h3>
+                <div class="filters" id="subjectFilters">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="Математика">Математика</button>
+                    <button class="filter-btn" data-filter="Информатика">Информатика</button>
+                    <button class="filter-btn" data-filter="Физика">Физика</button>
+                </div>
+
+                <h3>Фильтр по результату</h3>
+                <div class="filters" id="resultFilters">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="Победитель">Победитель</button>
+                    <button class="filter-btn" data-filter="Призёр">Призёр</button>
+                    <button class="filter-btn" data-filter="Участник">Участник</button>
+                </div>
+
+                <!-- Таблица -->
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Предмет</th>
+                            <th>Уровень</th>
+                            <th>Результат</th>
+                            <th>Ученик</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTableBody">
+                        <tr data-subject="Математика" data-result="Победитель">
+                            <td>Математика</td>
+                            <td>Всероссийская</td>
+                            <td>Победитель</td>
+                            <td>Иванов А.</td>
+                        </tr>
+                        <tr data-subject="Информатика" data-result="Призёр">
+                            <td>Информатика</td>
+                            <td>Региональный</td>
+                            <td>Призёр (2 место)</td>
+                            <td>Петрова М.</td>
+                        </tr>
+                        <tr data-subject="Физика" data-result="Участник">
+                            <td>Физика</td>
+                            <td>Международная</td>
+                            <td>Участник</td>
+                            <td>Сидоров Д.</td>
+                        </tr>
+                        <tr data-subject="Математика" data-result="Призёр">
+                            <td>Математика</td>
+                            <td>Республиканский</td>
+                            <td>Призёр (3 место)</td>
+                            <td>Кузнецов Е.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Образовательные программы -->
+            <section id="programs">
                 <h2>Образовательные программы</h2>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Robot_arm_with_gripper_and_camera.jpg/800px-Robot_arm_with_gripper_and_camera.jpg" alt="Робототехника" class="detail-image">
                 <p>В лицее реализуются углублённые программы по математике, физике, информатике, биологии и химии. Также доступны курсы по робототехнике, программированию, олимпиадной подготовке и soft skills.</p>
-                <p>Учащиеся участвуют в проектной деятельности, хакатонах, научных исследованиях под руководством преподавателей и внешних экспертов. В лицее действуют лаборатории: IT-куб, биотех, инженерный класс и коворкинг-пространства для командной работы.</p>
-            </div>
+            </section>
 
-            <div id="accommodation" class="detail-section">
+            <!-- Условия проживания -->
+            <section id="accommodation">
                 <h2>Условия проживания</h2>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Dormitory_interior.jpg/800px-Dormitory_interior.jpg" alt="Общежитие" class="detail-image">
                 <p>Учащиеся проживают в комфортабельных общежитиях с современной мебелью, зонами отдыха и учебы. Питание организовано по сбалансированному меню, разработанному с учётом возрастных потребностей растущего организма.</p>
-                <p>В каждом блоке — отдельные комнаты на 2–4 человека, санузел, душевые, зоны самообслуживания. Для досуга работают спортивные залы, библиотека, творческие студии и Wi-Fi по всему кампусу. Воспитательная служба обеспечивает круглосуточную поддержку и безопасность.</p>
-            </div>
+            </section>
+
+            <!-- Материалы и мероприятия -->
+            <section id="materials">
+                <h2>Материалы и мероприятия</h2>
+                <ul>
+                    <li><a href="#">Программа по олимпиадной математике (PDF)</a></li>
+                    <li><a href="#">Методичка по Python для 9–10 кл. (PDF)</a></li>
+                    <li><a href="#">Задачи по физике с решениями (ZIP)</a></li>
+                </ul>
+                <h3>Прошедшие мероприятия</h3>
+                <ul>
+                    <li>Октябрь 2024 — Интеллектуальный марафон «Лицейский вызов»</li>
+                    <li>Сентябрь 2024 — День открытых дверей</li>
+                </ul>
+            </section>
+
         </div>
     </main>
 
-    <!-- Подвал сайта -->
+    <!-- Подвал -->
     <footer class="site-footer">
         <div class="container">
-            <p>© Все права защищены. Имамов Рустам, 2025</p>
-            <p>Контакт для связи: <a href="mailto:imamovrru@gmail.com">imamovrru@gmail.com</a></p>
+            <p>© Имамов Рустам, 2025</p>
+            <p>Контакт: <a href="mailto:imamovrru@gmail.com">imamovrru@gmail.com</a></p>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // === Темная тема ===
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Проверяем сохранённую тему
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-theme');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            if (body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // === Фильтрация таблицы ===
+        let currentSubject = 'all';
+        let currentResult = 'all';
+
+        function filterTable() {
+            const rows = document.querySelectorAll('#resultsTableBody tr');
+            rows.forEach(row => {
+                const subject = row.dataset.subject;
+                const result = row.dataset.result;
+
+                const subjectMatch = (currentSubject === 'all' || subject === currentSubject);
+                const resultMatch = (currentResult === 'all' || result === currentResult);
+
+                if (subjectMatch && resultMatch) {
+                    row.classList.remove('hidden');
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+        }
+
+        // Обработчики для фильтров по предмету
+        document.querySelectorAll('#subjectFilters .filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#subjectFilters .filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentSubject = btn.dataset.filter;
+                filterTable();
+            });
+        });
+
+        // Обработчики для фильтров по результату
+        document.querySelectorAll('#resultFilters .filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#resultFilters .filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentResult = btn.dataset.filter;
+                filterTable();
+            });
+        });
+    </script>
 </body>
 </html>
