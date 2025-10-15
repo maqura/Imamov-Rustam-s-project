@@ -289,4 +289,69 @@ body {
     .hero-title { font-size: 2rem; }
     .main-content h2 { font-size: 1.7rem; }
     .main-content p { font-size: 1rem; }
+
+}
+
+/* === Скрытые детальные секции === */
+.detail-section {
+    display: none;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #eaeaea;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.detail-section h2 {
+    color: #1a202c;
+    margin-bottom: 1.2rem;
+    font-size: 2rem;
+}
+
+.detail-section p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.detail-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Кликабельные карточки === */
+.clickable {
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.clickable:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* === Адаптация под мобильные === */
+@media (max-width: 768px) {
+    .detail-section {
+        padding: 1.5rem;
+    }
+    .detail-section h2 {
+        font-size: 1.8rem;
+    }
+    .detail-image {
+        margin: 1rem 0;
+    }
 }
