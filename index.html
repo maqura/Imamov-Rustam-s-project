@@ -3,69 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="МБОУ «Лицей-интернат №79» — инновационное учреждение для одарённых детей в Набережных Челнах.">
+    <meta name="description" content="МБОУ «Лицей-интернат №79» — инновационное образовательное учреждение для одарённых детей в Набережных Челнах.">
     <title>Лицей-интернат №79</title>
     <style>
-        /* === Сброс и базовые стили === */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: "Segoe UI", system-ui, sans-serif;
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* Светлая тема */
-        body {
-            background-color: #fff;
             color: #333;
+            line-height: 1.6;
+            background-color: #fff;
         }
 
-        /* Тёмная тема */
-        body.dark-theme {
-            background-color: #1a202c;
-            color: #e2e8f0;
-        }
-
-        .dark-theme h2,
-        .dark-theme h3 {
-            color: #f7fafc;
-        }
-
-        .dark-theme a {
-            color: #63b3ed;
-        }
-
-        .dark-theme a:hover {
-            color: #90cdf4;
-        }
-
-        .dark-theme .results-table th {
-            background-color: #2d3748;
-            color: #f7fafc;
-        }
-
-        .dark-theme .results-table td {
-            border-color: #4a5568;
-        }
-
-        .dark-theme .site-footer {
-            background-color: #0f172a;
-        }
-
-        /* === Hero с фоном === */
+        /* Hero с фоном */
         .hero {
             height: 60vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             background-image: url('https://i4.photo.2gis.com/images/branch/0/30258560051325542_777e.jpg');
@@ -73,9 +30,8 @@
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
-            text-align: center;
             color: white;
-            padding: 0 20px;
+            text-align: center;
         }
 
         .hero::before {
@@ -89,43 +45,20 @@
             z-index: 1;
         }
 
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(4px);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: background 0.3s;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
         .hero-content {
             position: relative;
             z-index: 2;
+            padding: 0 20px;
         }
 
         .hero-title {
             font-size: 2.5rem;
             color: white;
             font-weight: 700;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
         }
 
-        /* === Контент === */
+        /* Основной контент */
         .main-content {
             padding: 3rem 0;
         }
@@ -138,110 +71,23 @@
         }
 
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         h2 {
             font-size: 1.8rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             color: #1a202c;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .dark-theme h2 {
-            border-bottom-color: #4a5568;
-        }
-
-        p {
-            margin-bottom: 1.2rem;
-            font-size: 1.05rem;
-        }
-
-        /* === Фильтры === */
-        .filters {
-            margin: 1.5rem 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .filter-btn {
-            padding: 6px 12px;
-            background: #e2e8f0;
-            border: 1px solid #cbd5e0;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-        }
-
-        .dark-theme .filter-btn {
-            background: #2d3748;
-            border-color: #4a5568;
-            color: #e2e8f0;
-        }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: #0056b3;
-            color: white;
-        }
-
-        .dark-theme .filter-btn.active,
-        .dark-theme .filter-btn:hover {
-            background: #3182ce;
-        }
-
-        /* === Таблица === */
-        .results-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            font-size: 1rem;
-        }
-
-        .results-table th,
-        .results-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .dark-theme .results-table th,
-        .dark-theme .results-table td {
-            border-bottom: 1px solid #4a5568;
-        }
-
-        .results-table th {
-            background-color: #f7fafc;
             font-weight: 600;
         }
 
-        .hidden {
-            display: none;
+        p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #4a5568;
         }
 
-        /* === Списки и ссылки === */
-        ul, ol {
-            padding-left: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        li {
-            margin-bottom: 0.6rem;
-        }
-
-        a {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-
-        .dark-theme a {
-            color: #63b3ed;
-        }
-
-        /* === Подвал === */
+        /* Подвал */
         .site-footer {
             background-color: #2d3748;
             color: #e2e8f0;
@@ -250,20 +96,67 @@
             text-align: center;
         }
 
+        .site-footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
         @media (max-width: 600px) {
-            .hero-title { font-size: 2rem; }
-            h2 { font-size: 1.6rem; }
-            .filters { flex-direction: column; align-items: flex-start; }
+            .hero-title {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Hero с фоном -->
     <header class="hero">
-        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">🌓</button>
         <div class="hero-content">
             <h1 class="hero-title">Лицей-интернат №79</h1>
         </div>
     </header>
 
-    <!--
+    <!-- Основной контент -->
+    <main class="main-content">
+        <div class="container">
+
+            <section id="about">
+                <h2>О лицее</h2>
+                <p>МБОУ «Лицей-интернат №79» — нетиповое инновационное образовательное учреждение для одарённых детей с круглосуточным пребыванием воспитанников в городе Набережные Челны, Республика Татарстан.</p>
+            </section>
+
+            <section id="history">
+                <h2>История лицея</h2>
+                <p>Лицей-интернат №79 был основан в 1990 году как центр для выявления и поддержки талантливых школьников. За годы своей работы лицей стал площадкой для развития научного, творческого и спортивного потенциала учащихся со всей республики.</p>
+            </section>
+
+            <section id="achievements">
+                <h2>Достижения</h2>
+                <p>Ученики лицея регулярно становятся призёрами и победителями Всероссийских олимпиад, международных конкурсов и научных конференций. Многие выпускники поступают в ведущие вузы России и мира, включая МГУ, МФТИ и MIT.</p>
+            </section>
+
+            <section id="programs">
+                <h2>Образовательные программы</h2>
+                <p>В лицее реализуются углублённые программы по математике, физике, информатике, биологии и химии. Также доступны курсы по робототехнике, программированию, олимпиадной подготовке и soft skills.</p>
+            </section>
+
+            <section id="accommodation">
+                <h2>Условия проживания</h2>
+                <p>Учащиеся проживают в комфортабельных общежитиях с современной мебелью, зонами отдыха и учебы. Питание организовано по сбалансированному меню, разработанному с учётом возрастных потребностей растущего организма.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>© Имамов Рустам, 2025</p>
+            <p>Контакт для связи: <a href="mailto:imamovrru@gmail.com">imamovrru@gmail.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>
