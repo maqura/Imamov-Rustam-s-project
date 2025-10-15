@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="МБОУ «Лицей-интернат №79» — инновационное образовательное учреждение для одарённых детей в Набережных Челнах.">
+    <meta name="description" content="МБОУ «Лицей-интернат №79» — инновационное учреждение для одарённых детей в Набережных Челнах.">
     <title>Лицей-интернат №79</title>
     <style>
         * {
@@ -58,7 +58,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.6);
         }
 
-        /* Основной контент */
+        /* Контент */
         .main-content {
             padding: 3rem 0;
         }
@@ -70,21 +70,53 @@
             padding: 0 20px;
         }
 
-        section {
-            margin-bottom: 2.5rem;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #1a202c;
+        /* Карточка-заголовок */
+        .section-header {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 18px 24px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 1.4rem;
             font-weight: 600;
+            color: #1a202c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        p {
+        .section-header:hover {
+            background: #edf2f7;
+            border-color: #cbd5e0;
+        }
+
+        .section-header::after {
+            content: "▼";
+            font-size: 0.8rem;
+            color: #a0aec0;
+            transition: transform 0.3s;
+        }
+
+        .section-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        /* Скрытый текст */
+        .section-content {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
             font-size: 1.05rem;
             line-height: 1.7;
             color: #4a5568;
+        }
+
+        .section-content.show {
+            max-height: 500px;
+            padding: 16px 24px 24px;
         }
 
         /* Подвал */
@@ -105,14 +137,15 @@
             .hero-title {
                 font-size: 2rem;
             }
-            h2 {
-                font-size: 1.6rem;
+            .section-header {
+                font-size: 1.3rem;
+                padding: 16px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero с фоном -->
+    <!-- Hero -->
     <header class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Лицей-интернат №79</h1>
@@ -123,30 +156,45 @@
     <main class="main-content">
         <div class="container">
 
-            <section id="about">
-                <h2>О лицее</h2>
-                <p>МБОУ «Лицей-интернат №79» — нетиповое инновационное образовательное учреждение для одарённых детей с круглосуточным пребыванием воспитанников в городе Набережные Челны, Республика Татарстан.</p>
-            </section>
+            <!-- О лицее -->
+            <div class="section-item">
+                <div class="section-header" id="toggle-about">О лицее</div>
+                <div class="section-content" id="content-about">
+                    МБОУ «Лицей-интернат №79» — нетиповое инновационное образовательное учреждение для одарённых детей с круглосуточным пребыванием воспитанников в городе Набережные Челны, Республика Татарстан.
+                </div>
+            </div>
 
-            <section id="history">
-                <h2>История лицея</h2>
-                <p>Лицей-интернат №79 был основан в 1990 году как центр для выявления и поддержки талантливых школьников. За годы своей работы лицей стал площадкой для развития научного, творческого и спортивного потенциала учащихся со всей республики.</p>
-            </section>
+            <!-- История -->
+            <div class="section-item">
+                <div class="section-header" id="toggle-history">История лицея</div>
+                <div class="section-content" id="content-history">
+                    Лицей-интернат №79 был основан в 1990 году как центр для выявления и поддержки талантливых школьников. За годы своей работы лицей стал площадкой для развития научного, творческого и спортивного потенциала учащихся со всей республики.
+                </div>
+            </div>
 
-            <section id="achievements">
-                <h2>Достижения</h2>
-                <p>Ученики лицея регулярно становятся призёрами и победителями Всероссийских олимпиад, международных конкурсов и научных конференций. Многие выпускники поступают в ведущие вузы России и мира, включая МГУ, МФТИ и MIT.</p>
-            </section>
+            <!-- Достижения -->
+            <div class="section-item">
+                <div class="section-header" id="toggle-achievements">Достижения</div>
+                <div class="section-content" id="content-achievements">
+                    Ученики лицея регулярно становятся призёрами и победителями Всероссийских олимпиад, международных конкурсов и научных конференций. Многие выпускники поступают в ведущие вузы России и мира, включая МГУ, МФТИ и MIT.
+                </div>
+            </div>
 
-            <section id="programs">
-                <h2>Образовательные программы</h2>
-                <p>В лицее реализуются углублённые программы по математике, физике, информатике, биологии и химии. Также доступны курсы по робототехнике, программированию, олимпиадной подготовке и soft skills.</p>
-            </section>
+            <!-- Программы -->
+            <div class="section-item">
+                <div class="section-header" id="toggle-programs">Образовательные программы</div>
+                <div class="section-content" id="content-programs">
+                    В лицее реализуются углублённые программы по математике, физике, информатике, биологии и химии. Также доступны курсы по робототехнике, программированию, олимпиадной подготовке и soft skills.
+                </div>
+            </div>
 
-            <section id="accommodation">
-                <h2>Условия проживания</h2>
-                <p>Учащиеся проживают в комфортабельных общежитиях с современной мебелью, зонами отдыха и учебы. Питание организовано по сбалансированному меню, разработанному с учётом возрастных потребностей растущего организма.</p>
-            </section>
+            <!-- Проживание -->
+            <div class="section-item">
+                <div class="section-header" id="toggle-accommodation">Условия проживания</div>
+                <div class="section-content" id="content-accommodation">
+                    Учащиеся проживают в комфортабельных общежитиях с современной мебелью, зонами отдыха и учебы. Питание организовано по сбалансированному меню, разработанному с учётом возрастных потребностей растущего организма.
+                </div>
+            </div>
 
         </div>
     </main>
@@ -158,5 +206,28 @@
             <p>Контакт для связи: <a href="mailto:imamovrru@gmail.com">imamovrru@gmail.com</a></p>
         </div>
     </footer>
+
+    <script>
+        document.querySelectorAll('.section-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isActive = header.classList.contains('active');
+
+                // Скрыть все
+                document.querySelectorAll('.section-content').forEach(c => {
+                    c.classList.remove('show');
+                });
+                document.querySelectorAll('.section-header').forEach(h => {
+                    h.classList.remove('active');
+                });
+
+                // Показать текущий (если не был активен)
+                if (!isActive) {
+                    content.classList.add('show');
+                    header.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
