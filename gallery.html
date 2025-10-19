@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Фотогалерея — Лицей-интернат №79</title>
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
     }
 
     body {
-      font-family: "Segoe UI", sans-serif;
+      font-family: "Segoe UI", system-ui, sans-serif;
       color: #333;
-      background-color: #f9fafb; /* Светло-серый фон */
+      background-color: #f9fafb;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
@@ -29,40 +30,53 @@
       max-width: 1000px;
       margin: 2rem auto;
       padding: 0 16px;
+      flex: 1;
     }
 
-    /* Сетка для фотографий: автоматически подстраивается под экран */
     .gallery {
       display: grid;
-      /* Минимум 240px на фото, но если экран широкий — добавляются колонки */
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px; /* Промежуток между фото */
+      gap: 16px;
+      margin-top: 1rem;
     }
 
     .gallery img {
-      width: 100%; /* Фото растягивается на всю ширину ячейки */
-      height: 200px; /* Фиксированная высота */
-      object-fit: cover; /* Обрезает фото, чтобы не искажалось */
-      border-radius: 8px; /* Скруглённые углы */
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Тень */
-      transition: transform 0.2s; /* Плавное увеличение при наведении */
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
 
     .gallery img:hover {
-      transform: scale(1.03); /* При наведении фото слегка увеличивается */
+      transform: scale(1.03);
+    }
+
+    /* Кнопка "Назад" */
+    .back-button {
+      display: inline-block;
+      background-color: #3182ce;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 2rem;
+      transition: background-color 0.2s;
+    }
+
+    .back-button:hover {
+      background-color: #2c5282;
+      transform: translateY(-2px);
     }
 
     footer {
       background-color: #2d3748;
       color: #e2e8f0;
       text-align: center;
-      padding: 24px 0;
-      margin-top: 3rem;
-    }
-
-    footer a {
-      color: white;
-      text-decoration: underline;
+      padding: 20px 0;
+      margin-top: auto;
     }
   </style>
 </head>
@@ -73,19 +87,20 @@
 
   <main class="container">
     <div class="gallery">
-      <!-- Заглушки. Замени ссылки src на свои фото позже -->
       <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Учёба" alt="Учёба">
       <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Лаборатория" alt="Лаборатория">
       <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Спорт" alt="Спорт">
-      <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Общежитие" alt="Интернат">
+      <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Общежитие" alt="Общежитие">
       <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Олимпиада" alt="Олимпиада">
       <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Выпуск" alt="Выпуск">
     </div>
+
+    <!-- Кнопка "Вернуться на главную" -->
+    <a href="index.html" class="back-button">← Вернуться на главную</a>
   </main>
 
   <footer>
-    <p>Имамов Рустам, 2025</p>
-    <p><a href="index.html">← Вернуться на главную</a></p>
+    <p>© Имамов Рустам, 2025</p>
   </footer>
 </body>
 </html>
