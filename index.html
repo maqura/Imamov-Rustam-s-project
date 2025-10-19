@@ -1,233 +1,267 @@
 <!DOCTYPE html>
+<!-- Говорим браузеру: это современный HTML5-документ -->
+
 <html lang="ru">
+<!-- Указываем, что язык страницы — русский (важно для поисковиков и экранных читалок) -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="МБОУ «Лицей-интернат №79» — инновационное учреждение для одарённых детей в Набережных Челнах.">
-    <title>Лицей-интернат №79</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <!-- Вся служебная информация о странице -->
 
-        body {
-            font-family: "Segoe UI", system-ui, sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background-color: #fff;
-        }
+  <meta charset="UTF-8">
+  <!-- Кодировка UTF-8 — чтобы русские буквы отображались правильно -->
 
-        /* Hero с фоном */
-        .hero {
-            height: 60vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('https://i4.photo.2gis.com/images/branch/0/30258560051325542_777e.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            color: white;
-            text-align: center;
-        }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Делает сайт адаптивным: на телефоне он не будет "уезжать" вбок -->
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
+  <meta name="description" content="МБОУ «Лицей-интернат №79» — инновационное учреждение для одарённых детей в Набережных Челнах.">
+  <!-- Краткое описание сайта — видно в поисковой выдаче (например, в Google) -->
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 0 20px;
-        }
+  <title>Лицей-интернат №79</title>
+  <!-- Название вкладки в браузере -->
 
-        .hero-title {
-            font-size: 2.5rem;
-            color: white;
-            font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-        }
+  <style>
+    /* НАЧАЛО СТИЛЕЙ (CSS) — всё оформление сайта */
 
-        /* Контент */
-        .main-content {
-            padding: 3rem 0;
-        }
+    /* Сброс стандартных отступов у всех элементов */
+    * {
+      margin: 0;        /* Убираем внешние отступы */
+      padding: 0;       /* Убираем внутренние отступы */
+      box-sizing: border-box; /* Ширина элемента включает padding и border */
+    }
 
-        .container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    /* Основные настройки страницы */
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif; /* Современный шрифт */
+      color: #333;        /* Тёмно-серый текст — легко читать */
+      line-height: 1.6;   /* Расстояние между строками — комфортное */
+      background-color: #fff; /* Белый фон */
+    }
 
-        /* Карточка-заголовок */
-        .section-header {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 18px 24px;
-            margin-bottom: 16px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #1a202c;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* === ШАПКА САЙТА (HERO) === */
+    .hero {
+      height: 60vh; /* Высота = 60% от высоты экрана */
+      display: flex;
+      justify-content: center; /* Горизонтальное центрирование */
+      align-items: center;     /* Вертикальное центрирование */
+      background-image: url('https://i4.photo.2gis.com/images/branch/0/30258560051325542_777e.jpg'); /* Фон — фото лицея */
+      background-size: cover;  /* Фон заполняет всю область без искажений */
+      background-position: center; /* Центрируем изображение */
+      background-repeat: no-repeat; /* Не повторяем фото */
+      position: relative; /* Нужен для наложения тёмной подложки */
+      color: white;       /* Белый текст */
+      text-align: center; /* Текст по центру */
+    }
 
-        .section-header:hover {
-            background: #edf2f7;
-            border-color: #cbd5e0;
-        }
+    /* Тёмная полупрозрачная подложка поверх фото — чтобы текст лучше читался */
+    .hero::before {
+      content: ''; /* Псевдоэлемент (невидимый блок) */
+      position: absolute; /* Позиционируем относительно .hero */
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Чёрный с прозрачностью 50% */
+      z-index: 1; /* Подложка под текстом */
+    }
 
-        .section-header::after {
-            content: "▼";
-            font-size: 0.8rem;
-            color: #a0aec0;
-            transition: transform 0.3s;
-        }
+    /* Контент внутри шапки (текст) */
+    .hero-content {
+      position: relative; /* Чтобы z-index работал */
+      z-index: 2;         /* Текст поверх подложки */
+      padding: 0 20px;    /* Отступы по бокам на маленьких экранах */
+    }
 
-        .section-header.active::after {
-            transform: rotate(180deg);
-        }
+    /* Заголовок в шапке */
+    .hero-title {
+      font-size: 2.5rem;       /* Большой размер шрифта */
+      color: white;            /* Белый цвет */
+      font-weight: 700;        /* Жирный шрифт */
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6); /* Тень — текст не сливается с фоном */
+    }
 
-        /* Скрытый текст */
-        .section-content {
-            padding: 0 24px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #4a5568;
-        }
+    /* === ОСНОВНОЙ КОНТЕНТ === */
+    .main-content {
+      padding: 3rem 0; /* Отступы сверху и снизу */
+    }
 
-        .section-content.show {
-            max-height: 500px;
-            padding: 16px 24px 24px;
-        }
+    .container {
+      width: 100%;
+      max-width: 900px; /* Максимальная ширина — не растягивается на огромных экранах */
+      margin: 0 auto;   /* Центрируем блок */
+      padding: 0 20px;  /* Отступы по бокам на мобильных */
+    }
 
-        /* Подвал */
-        .site-footer {
-            background-color: #2d3748;
-            color: #e2e8f0;
-            padding: 24px 0;
-            margin-top: 3rem;
-            text-align: center;
-        }
+    /* === ЗАГОЛОВОК РАЗДЕЛА (кликабельная кнопка) === */
+    .section-header {
+      background: #f8fafc;        /* Светло-серый фон */
+      border: 1px solid #e2e8f0;  /* Тонкая рамка */
+      border-radius: 8px;         /* Скруглённые углы */
+      padding: 18px 24px;         /* Внутренние отступы */
+      margin-bottom: 16px;        /* Отступ снизу */
+      cursor: pointer;            /* Курсор "рука" — как на кнопке */
+      transition: all 0.25s ease;  /* Плавное изменение при наведении */
+      font-size: 1.4rem;          /* Размер шрифта */
+      font-weight: 600;           /* Полужирный */
+      color: #1a202c;             /* Почти чёрный */
+      display: flex;
+      justify-content: space-between; /* Текст слева, стрелка — справа */
+      align-items: center;        /* Выравнивание по вертикали */
+    }
 
-        .site-footer a {
-            color: #fff;
-            text-decoration: underline;
-        }
+    /* Эффект при наведении мышкой */
+    .section-header:hover {
+      background: #edf2f7;      /* Чуть темнее фон */
+      border-color: #cbd5e0;    /* Рамка темнее */
+    }
 
-        @media (max-width: 600px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            .section-header {
-                font-size: 1.3rem;
-                padding: 16px 20px;
-            }
-        }
-    </style>
+    /* Стрелка вниз справа в заголовке */
+    .section-header::after {
+      content: "▼";             /* Символ стрелки */
+      font-size: 0.8rem;        /* Маленький размер */
+      color: #a0aec0;           /* Серый цвет */
+      transition: transform 0.3s; /* Плавный поворот */
+    }
+
+    /* Когда раздел открыт — стрелка поворачивается вверх */
+    .section-header.active::after {
+      transform: rotate(180deg); /* Поворот на 180 градусов */
+    }
+
+    /* === СКРЫТЫЙ ТЕКСТ ПОД ЗАГОЛОВКОМ === */
+    .section-content {
+      padding: 0 24px;          /* Отступы по бокам */
+      max-height: 0;            /* Изначально скрыт (высота = 0) */
+      overflow: hidden;         /* Обрезаем всё, что не влезает */
+      transition: max-height 0.4s ease, padding 0.4s ease; /* Плавное появление */
+      font-size: 1.05rem;       /* Размер текста */
+      line-height: 1.7;         /* Межстрочный интервал */
+      color: #4a5568;           /* Мягкий серый цвет текста */
+    }
+
+    /* Когда класс "show" добавлен — блок раскрывается */
+    .section-content.show {
+      max-height: 500px;        /* Достаточно высокий, чтобы вместить текст */
+      padding: 16px 24px 24px;  /* Появляются верхний и нижний отступы */
+    }
+
+    /* === ПОДВАЛ САЙТА === */
+    .site-footer {
+      background-color: #2d3748; /* Тёмно-серый фон */
+      color: #e2e8f0;           /* Светло-серый текст */
+      padding: 24px 0;          /* Отступы сверху и снизу */
+      margin-top: 3rem;         /* Отступ от основного контента */
+      text-align: center;       /* Текст по центру */
+    }
+
+    /* Ссылка в подвале */
+    .site-footer a {
+      color: #fff;              /* Белый цвет */
+      text-decoration: underline; /* Подчёркивание */
+    }
+
+    /* Адаптация для мобильных (экран ≤ 600px) */
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 2rem;        /* Меньший заголовок */
+      }
+      .section-header {
+        font-size: 1.3rem;      /* Меньший шрифт в кнопках */
+        padding: 16px 20px;     /* Меньше отступов */
+      }
+    }
+    /* КОНЕЦ СТИЛЕЙ */
+  </style>
 </head>
+
 <body>
-    <!-- Hero -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Лицей-интернат №79</h1>
+  <!-- ШАПКА САЙТА -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Лицей-интернат №79</h1>
+    </div>
+  </header>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- Раздел "О лицее" -->
+      <div class="section-item">
+        <!-- Кликабельный заголовок -->
+        <div class="section-header" id="toggle-about">О лицее</div>
+        <!-- Скрытый текст -->
+        <div class="section-content" id="content-about">
+          МБОУ «Лицей-интернат №79» — нетиповое инновационное образовательное учреждение для одарённых детей с круглосуточным пребыванием воспитанников в городе Набережные Челны, Республика Татарстан.
         </div>
-    </header>
+      </div>
 
-    <!-- Основной контент -->
-    <main class="main-content">
-        <div class="container">
-
-            <!-- О лицее -->
-            <div class="section-item">
-                <div class="section-header" id="toggle-about">О лицее</div>
-                <div class="section-content" id="content-about">
-                    МБОУ «Лицей-интернат №79» — нетиповое инновационное образовательное учреждение для одарённых детей с круглосуточным пребыванием воспитанников в городе Набережные Челны, Республика Татарстан.
-                </div>
-            </div>
-
-            <!-- История -->
-            <div class="section-item">
-                <div class="section-header" id="toggle-history">История лицея</div>
-                <div class="section-content" id="content-history">
-                    Лицей-интернат №79 был основан в 1990 году как центр для выявления и поддержки талантливых школьников. За годы своей работы лицей стал площадкой для развития научного, творческого и спортивного потенциала учащихся со всей республики.
-                </div>
-            </div>
-
-            <!-- Достижения -->
-            <div class="section-item">
-                <div class="section-header" id="toggle-achievements">Достижения</div>
-                <div class="section-content" id="content-achievements">
-                    Ученики лицея регулярно становятся призёрами и победителями Всероссийских олимпиад, международных конкурсов и научных конференций. Многие выпускники поступают в ведущие вузы России и мира, включая МГУ, МФТИ и MIT.
-                </div>
-            </div>
-
-            <!-- Программы -->
-            <div class="section-item">
-                <div class="section-header" id="toggle-programs">Образовательные программы</div>
-                <div class="section-content" id="content-programs">
-                    В лицее реализуются углублённые программы по математике, физике, информатике, биологии и химии. Также доступны курсы по робототехнике, программированию, олимпиадной подготовке и soft skills.
-                </div>
-            </div>
-
-            <!-- Проживание -->
-            <div class="section-item">
-                <div class="section-header" id="toggle-accommodation">Условия проживания</div>
-                <div class="section-content" id="content-accommodation">
-                    Учащиеся проживают в комфортабельных общежитиях с современной мебелью, зонами отдыха и учебы. Питание организовано по сбалансированному меню, разработанному с учётом возрастных потребностей растущего организма.
-                </div>
-            </div>
-
+      <!-- Раздел "История лицея" -->
+      <div class="section-item">
+        <div class="section-header" id="toggle-history">История лицея</div>
+        <div class="section-content" id="content-history">
+          Лицей-интернат №79 был основан в 1990 году как центр для выявления и поддержки талантливых школьников. За годы своей работы лицей стал площадкой для развития научного, творческого и спортивного потенциала учащихся со всей республики.
         </div>
-    </main>
+      </div>
 
-    <!-- Подвал -->
-    <footer class="site-footer">
-        <div class="container">
-            <p>© Имамов Рустам, 2025</p>
-            <p>Контакт для связи: <a href="mailto:imamovrru@gmail.com">imamovrru@gmail.com</a></p>
+      <!-- Раздел "Достижения" -->
+      <div class="section-item">
+        <div class="section-header" id="toggle-achievements">Достижения</div>
+        <div class="section-content" id="content-achievements">
+          Ученики лицея регулярно становятся призёрами и победителями Всероссийских олимпиад, международных конкурсов и научных конференций. Многие выпускники поступают в ведущие вузы России и мира, включая МГУ, МФТИ и MIT.
         </div>
-    </footer>
+      </div>
 
-    <script>
-        document.querySelectorAll('.section-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                const isActive = header.classList.contains('active');
+      <!-- Раздел "Образовательные программы" -->
+      <div class="section-item">
+        <div class="section-header" id="toggle-programs">Образовательные программы</div>
+        <div class="section-content" id="content-programs">
+          В лицее реализуются углублённые программы по математике, физике, информатике, биологии и химии. Также доступны курсы по робототехнике, программированию, олимпиадной подготовке и soft skills.
+        </div>
+      </div>
 
-                // Скрыть все
-                document.querySelectorAll('.section-content').forEach(c => {
-                    c.classList.remove('show');
-                });
-                document.querySelectorAll('.section-header').forEach(h => {
-                    h.classList.remove('active');
-                });
+      <!-- Раздел "Условия проживания" -->
+      <div class="section-item">
+        <div class="section-header" id="toggle-accommodation">Условия проживания</div>
+        <div class="section-content" id="content-accommodation">
+          Учащиеся проживают в комфортабельных общежитиях с современной мебелью, зонами отдыха и учебы. Питание организовано по сбалансированному меню, разработанному с учётом возрастных потребностей растущего организма.
+        </div>
+      </div>
 
-                // Показать текущий (если не был активен)
-                if (!isActive) {
-                    content.classList.add('show');
-                    header.classList.add('active');
-                }
-            });
+    </div>
+  </main>
+
+  <!-- ПОДВАЛ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Имамов Рустам, 2025</p>
+      <p>Контакт для связи: <a href="mailto:imamovrru@gmail.com">imamovrru@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT — ЛОГИКА ИНТЕРАКТИВНОСТИ -->
+  <script>
+    // Когда страница полностью загрузилась
+    document.querySelectorAll('.section-header').forEach(header => {
+      // Для каждого заголовка (кнопки) добавляем обработчик клика
+      header.addEventListener('click', () => {
+        // Находим текст, который идёт сразу после заголовка
+        const content = header.nextElementSibling;
+        // Проверяем, открыт ли сейчас этот блок
+        const isActive = header.classList.contains('active');
+
+        // Сначала закрываем ВСЕ открытые блоки
+        document.querySelectorAll('.section-content').forEach(c => {
+          c.classList.remove('show'); // Убираем класс "show"
         });
-    </script>
+        document.querySelectorAll('.section-header').forEach(h => {
+          h.classList.remove('active'); // Убираем стрелку вверх
+        });
+
+        // Если блок НЕ был открыт — открываем его
+        if (!isActive) {
+          content.classList.add('show');     // Показываем текст
+          header.classList.add('active');    // Меняем стрелку на "вверх"
+        }
+      });
+    });
+  </script>
 </body>
 </html>
