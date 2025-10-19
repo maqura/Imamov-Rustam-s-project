@@ -1,123 +1,121 @@
+/* === ПЛАВНАЯ ПРОКРУТКА === */
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* При переходе по якорям страница прокручивается плавно, а не резко */
 }
 
-/* Сброс и базовые стили */
+/* === СБРОС СТАНДАРТНЫХ СТИЛЕЙ БРАУЗЕРА === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;      /* Убираем внешние отступы у всех элементов */
+    padding: 0;     /* Убираем внутренние отступы */
+    box-sizing: border-box; /* Ширина элемента включает padding и border (удобнее для расчётов) */
 }
 
+/* === ОСНОВНЫЕ НАСТРОЙКИ ТЕКСТА === */
 body {
-    font-family: "Bahnschrift", "Segoe UI", Arial, sans-serif;
-    font-weight: 600;
-    color: #4a5568; /* мягкий серый */
-    line-height: 1.6;
+    font-family: "Bahnschrift", "Segoe UI", Arial, sans-serif; /* Современный, читаемый шрифт */
+    font-weight: 600;         /* Полужирное начертание по умолчанию */
+    color: #4a5568;           /* Мягкий серый цвет текста — не режет глаза */
+    line-height: 1.6;         /* Комфортное расстояние между строками */
 }
 
-/* === Hero-секция === */
+/* === ШАПКА САЙТА (HERO) — ПОЛНОЭКРАННАЯ === */
 .hero {
-    height: 100vh;
+    height: 100vh; /* Занимает всю высоту экрана */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Горизонтальное центрирование */
+    align-items: center;     /* Вертикальное центрирование */
     background-image: url('https://i4.photo.2gis.com/images/branch/0/30258560051325542_777e.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    color: white;
+    background-size: cover;  /* Фон растягивается, чтобы заполнить всю область без искажений */
+    background-position: center; /* Центрируем изображение */
+    background-repeat: no-repeat; /* Не повторяем фон */
+    position: relative; /* Нужен для наложения тёмной подложки */
+    color: white;       /* Белый текст на тёмном фоне */
 }
 
+/* Тёмная полупрозрачная подложка поверх фото — чтобы текст лучше читался */
 .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    content: ''; /* Псевдоэлемент (невидимый блок) */
+    position: absolute; /* Позиционируем относительно .hero */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Чёрный с 50% прозрачностью */
+    z-index: 1; /* Подложка под текстом */
 }
 
+/* Контент внутри шапки (текст) */
 .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
+    position: relative; /* Чтобы z-index работал */
+    z-index: 2;         /* Текст поверх подложки */
+    text-align: center; /* Текст по центру */
 }
 
+/* Заголовок в шапке */
 .hero-title {
-    font-size: 3.2rem;
-    color: white; /* ✅ явно белый */
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    font-size: 3.2rem; /* Очень крупный шрифт */
+    color: white;      /* Явно белый (на случай, если наследуется другой цвет) */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); /* Тень — текст не сливается с фоном */
 }
 
-/* === Кнопка "О проекте" === */
+/* === КНОПКА "О ПРОЕКТЕ" (в правом верхнем углу) === */
 .btn-about {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 3;
-    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute; /* Позиционируем относительно ближайшего родителя с position: relative */
+    top: 20px; right: 20px;
+    z-index: 3; /* Кнопка поверх всего */
+    background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный чёрный фон */
     color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
+    border: none;       /* Без рамки */
+    padding: 8px 16px;  /* Внутренние отступы */
+    border-radius: 4px; /* Скруглённые углы */
+    cursor: pointer;    /* Курсор "рука" — как на кнопке */
+    font-family: inherit; /* Шрифт как у родителя */
     font-weight: 600;
     font-size: 1rem;
 }
 
+/* Эффект при наведении на кнопку */
 .btn-about:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8); /* Темнее при наведении */
 }
 
-/* === Основной контент === */
+/* === ОСНОВНОЙ КОНТЕНТ САЙТА === */
 .main-content {
-    padding: 3rem 0;
-    background-color: #fff;
+    padding: 3rem 0;      /* Отступы сверху и снизу */
+    background-color: #fff; /* Белый фон */
 }
 
+/* Контейнер — ограничивает ширину и центрирует контент */
 .container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1200px; /* Не растягивается на очень широких экранах */
+    margin: 0 auto;    /* Центрирует блок */
+    padding: 0 20px;   /* Отступы по бокам на мобильных */
 }
 
-/* === Секция "О лицее" === */
-.about h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #1a202c; /* чёрный */
-}
-
-/* === Заголовки подглав — ЧЁРНЫЕ === */
+/* === СТИЛИ ДЛЯ ЗАГОЛОВКОВ И ТЕКСТА === */
 .main-content h2 {
     font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #1a202c; /* почти чёрный */
+    margin-bottom: 1rem; /* Отступ снизу */
+    color: #1a202c;      /* Почти чёрный — контрастный и читаемый */
     font-weight: 600;
 }
 
 .main-content p {
-    font-size: 1.125rem;
+    font-size: 1.125rem; /* Чуть крупнее стандартного */
     line-height: 1.6;
-    color: #4a5568;
-    font-weight: 500;
+    color: #4a5568;      /* Мягкий серый */
+    font-weight: 500;    /* Чуть тоньше заголовков */
 }
 
-/* === Карточки === */
+/* === КАРТОЧКИ С ИНФОРМАЦИЕЙ === */
 .card-container {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 28px;
+    grid-template-columns: 1fr; /* На мобильных — одна колонка */
+    gap: 28px;              /* Расстояние между карточками */
     margin-top: 2.5rem;
     padding: 0 10px;
 }
 
+/* На планшетах и десктопах — две колонки */
 @media (min-width: 769px) {
     .card-container {
         grid-template-columns: 1fr 1fr;
@@ -126,17 +124,18 @@ body {
     }
 }
 
+/* Стиль одной карточки */
 .card {
-    background: #fff;
-    border: 1px solid #eaeaea;
-    border-radius: 14px;
-    padding: 28px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    min-height: 260px;
+    background: #fff;                /* Белый фон */
+    border: 1px solid #eaeaea;       /* Тонкая серая рамка */
+    border-radius: 14px;             /* Сильно скруглённые углы */
+    padding: 28px;                   /* Внутренние отступы */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); /* Лёгкая тень */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Плавная анимация */
+    cursor: pointer;                 /* Курсор "рука" */
+    min-height: 260px;               /* Минимальная высота — чтобы карточки были одинаковыми */
     display: flex;
-    flex-direction: column;
+    flex-direction: column;          /* Текст растягивается по вертикали */
 }
 
 .card h2 {
@@ -148,14 +147,17 @@ body {
 .card p {
     font-size: 1.05rem;
     line-height: 1.6;
-    flex-grow: 1;
+    flex-grow: 1; /* Текст занимает всё доступное пространство */
 }
 
+/* Эффекты при наведении (только на устройствах с мышкой) */
 @media (hover: hover) {
+    /* Когда наводишь на весь контейнер — все карточки слегка уменьшаются */
     .card-container:hover .card {
         transform: scale(0.92);
         opacity: 0.85;
     }
+    /* А та, на которую навёл — увеличивается и выделяется */
     .card-container .card:hover {
         transform: scale(1.08);
         opacity: 1;
@@ -164,6 +166,7 @@ body {
     }
 }
 
+/* Адаптация для мобильных */
 @media (max-width: 768px) {
     .card {
         min-height: auto;
@@ -171,6 +174,7 @@ body {
     }
     .card h2 { font-size: 1.5rem; }
     .card p { font-size: 1rem; }
+    /* Отключаем анимацию масштабирования на телефонах (нет "наведения") */
     .card-container:hover .card,
     .card-container .card:hover {
         transform: none !important;
@@ -179,27 +183,28 @@ body {
     }
 }
 
-/* === Навигация внизу === */
+/* === НАВИГАЦИЯ ВНИЗУ СТРАНИЦЫ === */
 .bottom-nav {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: center; /* Центрируем ссылки */
+    gap: 2rem;               /* Расстояние между ссылками */
     margin-top: 40px;
     padding-top: 24px;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid #e2e8f0; /* Тонкая линия сверху */
 }
 
 .bottom-nav a {
-    text-decoration: none;
-    color: #0056b3;
+    text-decoration: none;   /* Убираем подчёркивание */
+    color: #0056b3;          /* Синий цвет ссылок */
     font-size: 1.15rem;
     font-weight: 600;
 }
 
 .bottom-nav a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Подчёркивание при наведении */
 }
 
+/* На мобильных — вертикальное расположение */
 @media (max-width: 768px) {
     .bottom-nav {
         flex-direction: column;
@@ -208,19 +213,19 @@ body {
     }
 }
 
-/* === Подвал === */
+/* === ПОДВАЛ САЙТА === */
 .site-footer {
-    background-color: #2d3748;
-    color: white;
+    background-color: #2d3748; /* Тёмно-серый фон */
+    color: white;              /* Белый текст */
     padding: 28px 0;
-    margin-top: 48px;
+    margin-top: 48px;          /* Отступ от основного контента */
     text-align: center;
 }
 
 .site-footer p {
     margin: 6px 0;
     font-size: 1rem;
-    color: #e2e8f0;
+    color: #e2e8f0;            /* Светло-серый текст */
     font-weight: 500;
 }
 
@@ -230,19 +235,17 @@ body {
 }
 
 .site-footer a:hover {
-    color: #cbd5e0;
+    color: #cbd5e0; /* Светлее при наведении */
 }
 
-/* === Модальное окно === */
+/* === МОДАЛЬНОЕ ОКНО (всплывающее окно) === */
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 2000;
+    display: none;             /* Скрыто по умолчанию */
+    position: fixed;           /* Фиксировано на экране */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный затемняющий фон */
+    z-index: 2000;             /* Очень высокий z-index — поверх всего */
 }
 
 .modal-dialog {
@@ -264,8 +267,7 @@ body {
 
 .close-btn {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 10px; right: 15px;
     font-size: 1.8rem;
     color: #aaa;
     cursor: pointer;
@@ -275,7 +277,7 @@ body {
     color: #000;
 }
 
-/* === Адаптация под мобильные === */
+/* === АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ === */
 @media (max-width: 768px) {
     .hero-title { font-size: 2.3rem; padding: 0 16px; }
     .main-content h2 { font-size: 1.85rem; margin-top: 2rem; }
@@ -289,18 +291,17 @@ body {
     .hero-title { font-size: 2rem; }
     .main-content h2 { font-size: 1.7rem; }
     .main-content p { font-size: 1rem; }
-
 }
 
-/* === Скрытые детальные секции === */
+/* === СКРЫТЫЕ ДЕТАЛЬНЫЕ СЕКЦИИ (для интерактивных карточек) === */
 .detail-section {
-    display: none;
+    display: none;             /* Изначально скрыты */
     margin-top: 3rem;
     padding: 2rem;
-    background: #f9fafb;
+    background: #f9fafb;       /* Очень светлый серый фон */
     border-radius: 12px;
     border: 1px solid #eaeaea;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out; /* Плавное появление при открытии */
 }
 
 .detail-section h2 {
@@ -315,6 +316,7 @@ body {
     line-height: 1.7;
 }
 
+/* Изображение внутри детальной секции */
 .detail-image {
     width: 100%;
     max-width: 600px;
@@ -324,26 +326,27 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     display: block;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; /* Центрируем изображение */
 }
 
+/* Анимация появления */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* === Кликабельные карточки === */
+/* === КЛИКАБЕЛЬНЫЕ КАРТОЧКИ (для интерактивности) === */
 .clickable {
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .clickable:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px); /* Карточка слегка поднимается */
     box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
-/* === Адаптация под мобильные === */
+/* Дополнительная адаптация для мобильных */
 @media (max-width: 768px) {
     .detail-section {
         padding: 1.5rem;
