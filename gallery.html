@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фотогалерея — Лицей-интернат №79</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      color: #333;
+      background-color: #f9fafb; /* Светло-серый фон */
+    }
+
+    header {
+      background-color: #2d3748;
+      color: white;
+      padding: 1.5rem 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 16px;
+    }
+
+    /* Сетка для фотографий: автоматически подстраивается под экран */
+    .gallery {
+      display: grid;
+      /* Минимум 240px на фото, но если экран широкий — добавляются колонки */
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px; /* Промежуток между фото */
+    }
+
+    .gallery img {
+      width: 100%; /* Фото растягивается на всю ширину ячейки */
+      height: 200px; /* Фиксированная высота */
+      object-fit: cover; /* Обрезает фото, чтобы не искажалось */
+      border-radius: 8px; /* Скруглённые углы */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Тень */
+      transition: transform 0.2s; /* Плавное увеличение при наведении */
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03); /* При наведении фото слегка увеличивается */
+    }
+
+    footer {
+      background-color: #2d3748;
+      color: #e2e8f0;
+      text-align: center;
+      padding: 24px 0;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Фотогалерея</h1>
+  </header>
+
+  <main class="container">
+    <div class="gallery">
+      <!-- Заглушки. Замени ссылки src на свои фото позже -->
+      <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Учёба" alt="Учёба">
+      <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Лаборатория" alt="Лаборатория">
+      <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Спорт" alt="Спорт">
+      <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Общежитие" alt="Интернат">
+      <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Олимпиада" alt="Олимпиада">
+      <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Выпуск" alt="Выпуск">
+    </div>
+  </main>
+
+  <footer>
+    <p>Имамов Рустам, 2025</p>
+    <p><a href="index.html">← Вернуться на главную</a></p>
+  </footer>
+</body>
+</html>
